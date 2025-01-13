@@ -1,0 +1,95 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4C7168D7-7CDA-4E90-AD59-42E7906370A5}|MantenimientoEquipos.csproj|d:\\mantenimientoequipos\\mantenimientoequipos\\views\\ordentrabajo\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4C7168D7-7CDA-4E90-AD59-42E7906370A5}|MantenimientoEquipos.csproj|solutionrelative:views\\ordentrabajo\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C7168D7-7CDA-4E90-AD59-42E7906370A5}|MantenimientoEquipos.csproj|d:\\mantenimientoequipos\\mantenimientoequipos\\controllers\\ordentrabajocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C7168D7-7CDA-4E90-AD59-42E7906370A5}|MantenimientoEquipos.csproj|solutionrelative:controllers\\ordentrabajocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C7168D7-7CDA-4E90-AD59-42E7906370A5}|MantenimientoEquipos.csproj|d:\\mantenimientoequipos\\mantenimientoequipos\\models\\ordentrabajo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C7168D7-7CDA-4E90-AD59-42E7906370A5}|MantenimientoEquipos.csproj|solutionrelative:models\\ordentrabajo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C7168D7-7CDA-4E90-AD59-42E7906370A5}|MantenimientoEquipos.csproj|d:\\mantenimientoequipos\\mantenimientoequipos\\views\\ordentrabajo\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4C7168D7-7CDA-4E90-AD59-42E7906370A5}|MantenimientoEquipos.csproj|solutionrelative:views\\ordentrabajo\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrdenTrabajo.cs",
+              "DocumentMoniker": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\Models\\OrdenTrabajo.cs",
+              "RelativeDocumentMoniker": "Models\\OrdenTrabajo.cs",
+              "ToolTip": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\Models\\OrdenTrabajo.cs",
+              "RelativeToolTip": "Models\\OrdenTrabajo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-13T15:28:13.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\Views\\OrdenTrabajo\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\OrdenTrabajo\\Index.cshtml",
+              "ToolTip": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\Views\\OrdenTrabajo\\Index.cshtml",
+              "RelativeToolTip": "Views\\OrdenTrabajo\\Index.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-13T15:00:34.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\Views\\OrdenTrabajo\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\OrdenTrabajo\\Create.cshtml",
+              "ToolTip": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\Views\\OrdenTrabajo\\Create.cshtml*",
+              "RelativeToolTip": "Views\\OrdenTrabajo\\Create.cshtml*",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAFsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-13T14:25:44.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrdenTrabajoController.cs",
+              "DocumentMoniker": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\Controllers\\OrdenTrabajoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrdenTrabajoController.cs",
+              "ToolTip": "D:\\MantenimientoEquipos\\MantenimientoEquipos\\Controllers\\OrdenTrabajoController.cs",
+              "RelativeToolTip": "Controllers\\OrdenTrabajoController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAgwFoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T21:21:25.926Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MantenimientoEquipos.Models.Equipo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="Importar" class="btn btn-primary">📂 Importar desde Excel</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ubicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fabricante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </th>
+            <th>Número de Serie</th>
+            <th>Capacidad</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Codigo</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ubicacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabricante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>@item.FechaCompra.ToString("dd/MM/yyyy")</td>
+            <td>@item.NumeroSerie</td>
+            <td>@item.Capacidad</td>
+            <td class="text-center">
+                <div class="d-inline-flex gap-2">
+                    <a asp-action="Edit" asp-route-id="@item.Id">✎</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id">ℹ</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">🗑</a>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,92 @@
+﻿@model MantenimientoEquipos.Models.OrdenTrabajo
+
+<h2>Crear Orden de Trabajo</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+    <div class="form-group">
+        <label>Código del Equipo</label>
+        <input id="codigoEquipo" class="form-control" placeholder="Ingrese el código del equipo" />
+        <input type="hidden" asp-for="Equipo.Codigo" id="CodigoHidden" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Equipo.Id">Nombre de Equipo</label>
+        <select id="equipoSelect" asp-for="Equipo.Id" class="form-control">
+            <option value="">Seleccione un equipo</option>
+            @foreach (var equipo in ViewBag.Equipos)
+            {
+                <option value="@equipo.Id" data-codigo="@equipo.Codigo">@equipo.Nombre</option>
+            }
+        </select>
+        <span asp-validation-for="Equipo.Id" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NumeroOrden">Orden de Trabajo</label>
+        <input asp-for="NumeroOrden" class="form-control" readonly />
+        <span asp-validation-for="NumeroOrden" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Descripcion"></label>
+        <textarea asp-for="Descripcion" class="form-control" required></textarea>
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Estado"></label>
+        <select asp-for="Estado" class="form-control">
+            <option value="Pendiente">Pendiente</option>
+            <option value="En Proceso">En Proceso</option>
+            <option value="Completado">Completado</option>
+        </select>
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaInicio"></label>
+        <input asp-for="FechaInicio" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+        <span asp-validation-for="FechaInicio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaFin"></label>
+        <input asp-for="FechaFin" class="form-control" type="date" />
+        <span asp-validation-for="FechaFin" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let codigoInput = document.getElementById("codigoEquipo");
+            let codigoHidden = document.getElementById("CodigoHidden");
+            let equipoSelect = document.getElementById("equipoSelect");
+
+            codigoInput.addEventListener("input", function () {
+                let codigoIngresado = codigoInput.value.trim().toLowerCase();
+
+                for (let option of equipoSelect.options) {
+                    if (option.dataset.codigo && option.dataset.codigo.toLowerCase() === codigoIngresado) {
+                        equipoSelect.value = option.value;
+                        codigoHidden.value = option.dataset.codigo; // 🔹 Mantener el código del equipo
+                        break;
+                    }
+                }
+            });
+
+            equipoSelect.addEventListener("change", function () {
+                let selectedOption = equipoSelect.options[equipoSelect.selectedIndex];
+                codigoInput.value = selectedOption.dataset.codigo || "";
+                codigoHidden.value = selectedOption.dataset.codigo || ""; // 🔹 Actualizar el campo oculto
+            });
+        });
+    </script>
+}

@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-2">Control de Mantenimiento</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<h2>Resumen General</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h3>Total de Equipos</h3>
+                <p>@ViewBag.TotalEquipos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h3>Total de Mantenimientos</h3>
+                <p>@ViewBag.TotalMantenimientos</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Últimos Mantenimientos</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Equipo</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.UltimosMantenimientos)
+        {
+            <tr>
+                <td>@item.Equipo.Nombre</td>
+                <td>@item.TipoMantenimiento</td>
+                <td>@item.FechaInicio.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- Botones de acceso rápido -->
+<div class="mt-4">
+    <a class="btn btn-primary" href="@Url.Action("Index", "Equipo")">
+        📋 Gestión de Equipos
+    </a>
+    <a class="btn btn-secondary" href="@Url.Action("Index", "OrdenTrabajo")">
+        🛠 Gestión de Órdenes de Trabajo
+    </a>
+</div>

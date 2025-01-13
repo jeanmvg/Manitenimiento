@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MantenimientoEquipos.Models.OrdenTrabajo>
+
+<h2>Órdenes de Trabajo</h2>
+
+<a asp-action="Create" class="btn btn-primary">➕ Nueva Orden</a>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Equipo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orden in Model)
+        {
+            <tr>
+                <td>@orden.NumeroOrden</td>
+                <td>@orden.Descripcion</td>
+                <td>@orden.Estado</td>
+                <td>@orden.FechaInicio.ToString("dd/MM/yyyy")</td>
+                <td>@(orden.FechaFin.HasValue ? orden.FechaFin.Value.ToString("dd/MM/yyyy") : "-")</td>
+                <td>@orden.Equipo.Nombre</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@orden.Id" class="btn btn-warning">✏</a>
+                    <a asp-action="Details" asp-route-id="@orden.Id" class="btn btn-info">ℹ</a>
+                    <form asp-action="Delete" asp-route-id="@orden.Id" method="post"
+                          onsubmit="return confirm('¿Eliminar esta orden de trabajo?');" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">🗑</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

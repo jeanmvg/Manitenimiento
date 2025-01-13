@@ -1,0 +1,102 @@
+﻿@model MantenimientoEquipos.Models.Equipo
+
+@{
+    ViewData["Title"] = "Editar Equipo";
+}
+
+<h1>Editar Equipo</h1>
+
+<h4>Equipo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Codigo" class="control-label"></label>
+                <input asp-for="Codigo" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" required />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <input asp-for="Tipo" class="form-control" />
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Ubicacion" class="control-label"></label>
+                <select asp-for="Ubicacion" class="form-control">
+                    <option value="Cuarto de Máquinas">Cuarto de Máquinas</option>
+                    <option value="Desorción">Desorción</option>
+                    <option value="Fundición">Fundición</option>
+                    <option value="Hidrometalurgia">Hidrometalurgia</option>
+                    <option value="Laboratorio">Laboratorio</option>
+                    <option value="Refinación">Refinación</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <select asp-for="Estado" class="form-control">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                    <option value="En Reparación">En Reparación</option>
+                </select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Fabricante" class="control-label"></label>
+                <input asp-for="Fabricante" class="form-control" />
+                <span asp-validation-for="Fabricante" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Modelo" class="control-label"></label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NumeroSerie" class="control-label"></label>
+                <input asp-for="NumeroSerie" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Capacidad" class="control-label"></label>
+                <input asp-for="Capacidad" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FrecuenciaMantenimiento" class="control-label"></label>
+                <input asp-for="FrecuenciaMantenimiento" class="form-control" />
+                <span asp-validation-for="FrecuenciaMantenimiento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FechaCompra" class="control-label"></label>
+                <input asp-for="FechaCompra" class="form-control" type="date" />
+                <span asp-validation-for="FechaCompra" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

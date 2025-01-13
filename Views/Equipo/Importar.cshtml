@@ -1,0 +1,15 @@
+﻿<h2>📂 Importar Equipos desde Excel</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">@ViewBag.Message</div>
+}
+
+<form asp-action="ImportarDesdeExcel" asp-controller="Equipo" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Selecciona el archivo de Excel:</label>
+        <input type="file" name="archivo" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success mt-2">Importar</button>
+    <a asp-action="Index" class="btn btn-secondary mt-2">Cancelar</a>
+</form>
