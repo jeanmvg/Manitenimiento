@@ -8,6 +8,11 @@ namespace MantenimientoEquipos.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Debe seleccionar un equipo.")]
+        public int EquipoId { get; set; }
+
+        [ForeignKey("EquipoId")]
+        public virtual Equipo Equipo { get; set; }
 
         [Required]
         [StringLength(15)]
@@ -29,10 +34,6 @@ namespace MantenimientoEquipos.Models
         [DataType(DataType.Date)]
         public DateTime? FechaFin { get; set; } // Opcional
 
-        [Required(ErrorMessage = "Debe seleccionar un equipo.")]
-        public int EquipoId { get; set; }
-
-        [ForeignKey("EquipoId")]
-        public virtual Equipo Equipo { get; set; }
+        
     }
 }

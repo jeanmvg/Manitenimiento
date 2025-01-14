@@ -31,37 +31,35 @@ namespace MantenimientoEquipos.Controllers
                 FechaInicio = DateTime.Today
             };
 
-            ViewBag.Equipos = _context.Equipos
-                .Select(e => new { e.Id, e.Nombre })
-                .ToList();
+            var equipos = _context.Equipos.Select(e => new { e.Id, e.Codigo }).ToList();
+
+            if (equipos == null || equipos.Count == 0)
+            {
+                Console.WriteLine("❌ ERROR: No hay equipos en la base de datos.");
+            }
+
+            ViewBag.Equipos = equipos;
             return View(nuevaOrden);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NumeroOrden,Descripcion,Estado,FechaInicio,FechaFin,EquipoId,TipoMantenimiento")] OrdenTrabajo orden)
         {
-            // Debug: Imprimir valores en consola
-            Console.WriteLine("🚀 Recibido en el controlador:");
-            Console.WriteLine($"NumeroOrden: {orden.NumeroOrden}");
-            Console.WriteLine($"EquipoId: {orden.EquipoId}");
-            Console.WriteLine($"TipoMantenimiento: {orden.TipoMantenimiento}");
-            Console.WriteLine($"FechaInicio: {orden.FechaInicio}");
-            
-            if (orden.EquipoId == 0)
-            {
-                Console.WriteLine("❌ ERROR: EquipoId está llegando como 0 o NULL");
-                ModelState.AddModelError("EquipoId", "Debe seleccionar un equipo válido.");
-            }
+            Console.WriteLine("🚀 DEPURACIÓN: Datos Recibidos en el Controlador");
+            Console.WriteLine($"📌 NumeroOrden: {orden.NumeroOrden}");
+            Console.WriteLine($"📌 EquipoId: {orden.EquipoId}");
+            Console.WriteLine($"📌 TipoMantenimiento: {orden.TipoMantenimiento}");
+            Console.WriteLine($"📌 FechaInicio: {orden.FechaInicio}");
 
-            // Validaciones manuales para depuración
-            if (string.IsNullOrEmpty(orden.TipoMantenimiento))
+            // 🔹 Verificar si el EquipoId realmente existe en la base de datos antes de guardarlo
+            var equipoExistente = await _context.Equipos.FindAsync(orden.EquipoId);
+            if (equipoExistente == null)
             {
-                ModelState.AddModelError("TipoMantenimiento", "El tipo de mantenimiento es obligatorio.");
-            }
-
-            if (!_context.Equipos.Any(e => e.Id == orden.EquipoId))
-            {
+                Console.WriteLine("❌ ERROR: El EquipoId no existe en la base de datos.");
                 ModelState.AddModelError("EquipoId", "Debe seleccionar un equipo válido.");
+                ViewBag.Equipos = _context.Equipos.ToList();
+                return View(orden);
             }
 
             if (!ModelState.IsValid)
