@@ -6,27 +6,17 @@
     <div asp-validation-summary="All" class="alert alert-danger"></div>
 
     <div class="form-group">
-        <label>Código del Equipo</label>
-        <input id="codigoEquipo" class="form-control" placeholder="Ingrese el código del equipo" />
-        <input type="hidden" asp-for="Equipo.Codigo" id="CodigoHidden" />
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Equipo.Id">Nombre de Equipo</label>
-        <select id="equipoSelect" asp-for="Equipo.Id" class="form-control">
-            <option value="">Seleccione un equipo</option>
-            @foreach (var equipo in ViewBag.Equipos)
-            {
-                <option value="@equipo.Id" data-codigo="@equipo.Codigo">@equipo.Nombre</option>
-            }
-        </select>
-        <span asp-validation-for="Equipo.Id" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="NumeroOrden">Orden de Trabajo</label>
+        <label asp-for="NumeroOrden"></label>
         <input asp-for="NumeroOrden" class="form-control" readonly />
-        <span asp-validation-for="NumeroOrden" class="text-danger"></span>
+        <input type="hidden" asp-for="NumeroOrden" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EquipoId"></label>
+        <select asp-for="EquipoId" class="form-control" asp-items="@(new SelectList(ViewBag.Equipos, "Id", "Nombre"))">
+            <option value="">Seleccione un equipo</option>
+        </select>
+        <span asp-validation-for="EquipoId" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -34,7 +24,16 @@
         <textarea asp-for="Descripcion" class="form-control" required></textarea>
         <span asp-validation-for="Descripcion" class="text-danger"></span>
     </div>
-
+    <div class="form-group">
+        <label asp-for="TipoMantenimiento"></label>
+        <select asp-for="TipoMantenimiento" class="form-control">
+            <option value="">Seleccione el tipo de mantenimiento</option>
+            <option value="Preventivo">Preventivo</option>
+            <option value="Correctivo">Correctivo</option>
+            <option value="Predictivo">Predictivo</option>
+        </select>
+        <span asp-validation-for="TipoMantenimiento" class="text-danger"></span>
+    </div>
     <div class="form-group">
         <label asp-for="Estado"></label>
         <select asp-for="Estado" class="form-control">
@@ -42,12 +41,11 @@
             <option value="En Proceso">En Proceso</option>
             <option value="Completado">Completado</option>
         </select>
-        <span asp-validation-for="Estado" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="FechaInicio"></label>
-        <input asp-for="FechaInicio" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+        <input asp-for="FechaInicio" class="form-control" type="date" />
         <span asp-validation-for="FechaInicio" class="text-danger"></span>
     </div>
 
@@ -63,30 +61,4 @@
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let codigoInput = document.getElementById("codigoEquipo");
-            let codigoHidden = document.getElementById("CodigoHidden");
-            let equipoSelect = document.getElementById("equipoSelect");
-
-            codigoInput.addEventListener("input", function () {
-                let codigoIngresado = codigoInput.value.trim().toLowerCase();
-
-                for (let option of equipoSelect.options) {
-                    if (option.dataset.codigo && option.dataset.codigo.toLowerCase() === codigoIngresado) {
-                        equipoSelect.value = option.value;
-                        codigoHidden.value = option.dataset.codigo; // 🔹 Mantener el código del equipo
-                        break;
-                    }
-                }
-            });
-
-            equipoSelect.addEventListener("change", function () {
-                let selectedOption = equipoSelect.options[equipoSelect.selectedIndex];
-                codigoInput.value = selectedOption.dataset.codigo || "";
-                codigoHidden.value = selectedOption.dataset.codigo || ""; // 🔹 Actualizar el campo oculto
-            });
-        });
-    </script>
 }

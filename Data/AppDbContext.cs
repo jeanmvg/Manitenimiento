@@ -7,8 +7,9 @@ namespace MantenimientoEquipos.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Equipo> Equipos { get; set; }
         public DbSet<OrdenTrabajo> OrdenesTrabajo { get; set; }
+        public DbSet<Equipo> Equipos { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
